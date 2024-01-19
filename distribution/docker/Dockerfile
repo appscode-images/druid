@@ -93,7 +93,7 @@ RUN mkdir /opt/druid/var /opt/shared \
  && chown druid:druid /opt/druid/var /opt/shared \
  && chmod 775 /opt/druid/var /opt/shared
 
-USER druid
+USER 1000
 VOLUME /opt/druid/var
 WORKDIR /opt/druid
 
