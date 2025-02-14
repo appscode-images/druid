@@ -97,6 +97,17 @@ RUN --mount=type=bind,from=builder,source=/opt,target=/builder/opt \
  && chown -R druid:druid /opt/druid /opt/shared \
  && chmod 775 /opt/druid/var /opt/shared
 
+RUN mkdir /opt/druid/var/tmp && \
+  chgrp -R 0 /opt/druid/var/tmp && \
+  chmod -R g=u /opt/druid/var/tmp
+
+RUN mkdir /opt/druid/var/druid/ && \
+  chgrp -R 0 /opt/druid/var/druid/ && \
+  chmod -R g=u /opt/druid/var/druid/
+
+RUN chgrp -R 0 /opt/druid/bin/run-java && \
+  chmod -R g=u /opt/druid/bin/run-java
+
 USER druid
 VOLUME /opt/druid/var
 WORKDIR /opt/druid
